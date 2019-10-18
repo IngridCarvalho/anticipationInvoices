@@ -1,0 +1,9 @@
+<div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="search">{{ search }}</label>
+    <input type="text" class="form-control" [placeholder]="searchPlaceholder">
+  </div>
+  <div class="form-group col-auto mt-2">
+    <button type="submit" class="btn btn-primary mt-4" (click)="btnSearch.emit()">Pesquisar</button>
+  </div>
+</div>
