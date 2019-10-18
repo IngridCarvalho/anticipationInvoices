@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
 })
 export class InvoiceListComponent{
 
+    numberSearch: number;
+
     search(){
         console.log('teste');
     }
