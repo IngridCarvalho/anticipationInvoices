@@ -1,0 +1,62 @@
+<div class="container">
+    <app-title titlePage="Cadastro de Nota Fiscal"></app-title>
+    <form #form="ngForm" [formGroup]="invoiceForm" (submit)="saveInvoice()">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="number">Número:</label>
+                <input formControlName="number" type="number" class="form-control">
+                <app-error-message
+                    message="O número da nf é obrigatório!" 
+                    *ngIf="invoiceForm.get('number').errors?.required && 
+                    (form.submitted || invoiceForm.get('number').touched)">
+                </app-error-message>
+            </div>
+            <div class="col-md-8">
+                <label for="description">Descrição:</label>
+                <input formControlName="description" type="text" class="form-control">
+                <app-error-message
+                    message="A descrição é obrigatória!" 
+                    *ngIf="invoiceForm.get('description').errors?.required && 
+                    (form.submitted || invoiceForm.get('description').touched)">
+                </app-error-message> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label for="billingDate">Data de Faturamento:</label>
+                <input formControlName="billingDate" type="date" class="form-control">
+                <app-error-message
+                    message="A data de faturamento é obrigatória!" 
+                    *ngIf="invoiceForm.get('billingDate').errors?.required && 
+                    (form.submitted || invoiceForm.get('billingDate').touched)">
+                </app-error-message> 
+            </div>
+            <div class="col-md-3">
+                <label for="paymentDate">Data de Pagamento:</label>
+                <input formControlName="paymentDate" type="date" class="form-control">
+                <app-error-message
+                    message="A data de pagamento é obrigatória!" 
+                    *ngIf="invoiceForm.get('paymentDate').errors?.required && 
+                    (form.submitted || invoiceForm.get('paymentDate').touched)">
+                </app-error-message> 
+            </div>
+            <div class="form-group col-md-3">
+                <label for="status">Status</label>
+                    <select formControlName="status" class="form-control">
+                        <option value="Pendente" selected>Pendente</option>
+                        <option value="Aprovado">Aprovado</option>
+                        <option value="Reprovado">Reprovado</option>
+                    </select>
+                    <app-error-message
+                        message="O status é obrigatório!" 
+                        *ngIf="invoiceForm.get('status').errors?.required && 
+                        (form.submitted || invoiceForm.get('status').touched)">
+                    </app-error-message> 
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Gravar</button>
+            <button class="btn btn-primary ml-2" [routerLink]="''">Voltar</button>
+        </div>
+    </form>
+</div>
