@@ -9,6 +9,5 @@ export class ModalComponent{
 
     @Input() titleModal = '';
     @Input() idModal = '';
-    @Input() form = '';
     @Output() btnConfirm: EventEmitter<any> = new EventEmitter();
 }   

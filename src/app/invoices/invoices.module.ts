@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
-import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { CommonModule } from '@angular/common';
-import { InvoiceForm } from './invoice-form/invoice-form.component';
+
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { SearchModule } from '../shared/components/search/search.module';
+import { ModalModule } from '../shared/components/modal/modal.module';
+import { TitleModule } from '../shared/components/title/title.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         InvoiceListComponent,
-        InvoiceForm
+        InvoiceFormComponent
     ],
     imports: [
         CommonModule,
-        SearchModule
+        SearchModule,
+        ModalModule,
+        TitleModule,
+        RouterModule
     ]
 })
 export class InvoicesModule{}

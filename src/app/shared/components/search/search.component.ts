@@ -9,7 +9,10 @@ export class SearchComponent{
 
 	@Input() search : string = '';
   @Input() searchPlaceholder: string = '';
+  @Input() numberSearch: number;
   @Output() btnSearch: EventEmitter<any> = new EventEmitter();
+
+  
 
 
 }

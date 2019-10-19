@@ -5,10 +5,9 @@ import { Component } from '@angular/core';
 })
 export class InvoiceListComponent{
 
-    numberSearch: number;
-
-    search(){
-        console.log('teste');
+    search(number){
+        // fazer a pesquisa, já pega o valor digitado
+        console.log(number);
     }
 
 }

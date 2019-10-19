@@ -1,4 +1,43 @@
 <div class="container">
-   <app-search search="Buscar NF:" searchPlaceholder="Informe um número" (btnSearch)="search()"></app-search>
-    <p>list invoices</p>
+    <app-title titlePage="Lista de Notas" btnNew="Nova Nota Fiscal"></app-title>
+    <app-search search="Buscar NF:" searchPlaceholder="Informe um número" [numberSearch]="number"
+        (btnSearch)="search($event)">
+    </app-search>
+    <div class="table-responsive">
+        <table class="table table-bordered text-center">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nº NF</th>
+                    <th>Descrição</th>
+                    <th>Data de Pagamento</th>
+                    <th>Status</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Teste</td>
+                    <td>Teste</td>
+                    <td>Teste</td>
+                    <td>Teste</td>
+                    <td>
+                        <a showIfResponsible href="#" class="btn btn-info" data-toggle="modal"
+                            data-target="#view" (click)="ViewHomework(homework._id)">Solicitar Antecipação</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <app-modal 
+            titleModal="Solicitar Antecipação de pagamento:" 
+            idModal="view">
+            <form (submit)="gravar()">
+                <div class="input-group">
+                    <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
+                    <input type="date" class="form-control col-4">
+                </div>
+            </form>
+        </app-modal>
+    </div>
 </div>
