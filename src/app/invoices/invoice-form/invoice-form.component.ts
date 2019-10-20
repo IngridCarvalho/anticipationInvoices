@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Invoice } from '../invoice/invoice';
 
 @Component({
     templateUrl: './invoice-form.component.html'
@@ -25,6 +26,14 @@ export class InvoiceFormComponent implements OnInit{
             paymentDate: ['', Validators.required],
             status: ['', Validators.required]
         })
+    }
+
+    saveInvoice(){
+        if(!this.invoiceForm.pending && this.invoiceForm.valid){
+            const newInvoice = this.invoiceForm.getRawValue() as Invoice;
+
+            // call function for service
+        }
     }
 
 }
