@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Invoice } from '../invoice/invoice';
+import { InvoiceService } from '../invoice/invoice.service';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './invoice-form.component.html'
@@ -10,7 +12,9 @@ export class InvoiceFormComponent implements OnInit{
     invoiceForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private invoiceService: InvoiceService,
+        private router: Router
     ){}
     
     ngOnInit(): void {
@@ -32,7 +36,11 @@ export class InvoiceFormComponent implements OnInit{
         if(!this.invoiceForm.pending && this.invoiceForm.valid){
             const newInvoice = this.invoiceForm.getRawValue() as Invoice;
 
-            // call function for service
+            this.invoiceService.addInvoice(newInvoice)
+                .subscribe(
+                    () => this.router.navigate(['']),
+                    err => console.log(err)
+                )
         }
     }
 

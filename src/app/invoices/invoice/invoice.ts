@@ -1,4 +1,5 @@
 export interface Invoice{
+    _id?: number,
     number: number,
     description: string,
     billingDate: Date,

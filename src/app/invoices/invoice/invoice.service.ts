@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { take } from 'rxjs/operators';
 
 import { Invoice } from './invoice';
 
@@ -12,12 +11,16 @@ export class InvoiceService{
 
     constructor(private http: HttpClient){}
 
-    listStudents(){
-        return this.http.get<Invoice[]>(API + '/invoice');
+    listInvoices(){
+        return this.http.get<Invoice[]>(API + 'invoice');
     }
 
-    private addInvoice(newInvoice){
-        return this.http.post(API + '/invoice', newInvoice).pipe(take(1));
+    addInvoice(newInvoice){
+        return this.http.post(API + 'invoice', newInvoice);
+    }
+
+    findByNumber(number){
+        return this.http.get<Invoice[]>(API + 'invoice/search/' + number);
     }
 
 }

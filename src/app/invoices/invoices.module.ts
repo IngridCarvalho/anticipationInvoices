@@ -9,11 +9,13 @@ import { SearchModule } from '../shared/components/search/search.module';
 import { ModalModule } from '../shared/components/modal/modal.module';
 import { TitleModule } from '../shared/components/title/title.module';
 import { ErrorMessageModule } from '../shared/components/error-message/error-message.module';
+import { InvoicesAnticipationComponent } from './invoices-anticipation/invoices-anticipation.component';
 
 @NgModule({
     declarations: [
         InvoiceListComponent,
-        InvoiceFormComponent
+        InvoiceFormComponent,
+        InvoicesAnticipationComponent
     ],
     imports: [
         CommonModule,
