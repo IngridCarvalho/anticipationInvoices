@@ -10,9 +10,12 @@ import { ModalModule } from '../shared/components/modal/modal.module';
 import { TitleModule } from '../shared/components/title/title.module';
 import { ErrorMessageModule } from '../shared/components/error-message/error-message.module';
 import { InvoicesAnticipationComponent } from './invoices-anticipation/invoices-anticipation.component';
+import { InvoicesComponent } from './invoices.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
     declarations: [
+        InvoicesComponent,
         InvoiceListComponent,
         InvoiceFormComponent,
         InvoicesAnticipationComponent
@@ -25,7 +28,8 @@ import { InvoicesAnticipationComponent } from './invoices-anticipation/invoices-
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        ErrorMessageModule
+        ErrorMessageModule,
+        CoreModule
     ]
 })
 export class InvoicesModule{}

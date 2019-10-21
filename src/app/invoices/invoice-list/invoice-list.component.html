@@ -19,7 +19,7 @@
                     <td>{{ invoice.number }}</td>
                     <td>{{ invoice.description }}</td>
                     <td>{{ invoice.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
-                    <td>{{ invoice.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
+                    <td>{{ invoice.status }}</td>
                     <td>
                         <a href="#" class="btn btn-info" data-toggle="modal"
                             data-target="#view">Solicitar Antecipação</a>

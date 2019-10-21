@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { Invoice } from '../invoice/invoice';
 import { InvoiceService } from '../invoice/invoice.service';
-import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './invoice-form.component.html'
@@ -28,7 +29,7 @@ export class InvoiceFormComponent implements OnInit{
             ],
             billingDate: ['', Validators.required],
             paymentDate: ['', Validators.required],
-            status: ['', Validators.required]
+            status: ['Pendente', Validators.required]
         })
     }
 

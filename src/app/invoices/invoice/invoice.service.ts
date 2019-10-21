@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 import { Invoice } from './invoice';
+import { Anticipation } from './anticipation';
 
 const API = environment.apiUrl;
 
@@ -21,6 +22,10 @@ export class InvoiceService{
 
     findByNumber(number){
         return this.http.get<Invoice[]>(API + 'invoice/search/' + number);
+    }
+
+    listAnticipations(){
+        return this.http.get<Anticipation[]>(API + 'anticipations');
     }
 
 }

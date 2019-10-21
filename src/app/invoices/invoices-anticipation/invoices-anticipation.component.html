@@ -1,26 +1,24 @@
 <div class="container">
     <app-title titlePage="Solicitações de Antecipação"></app-title>
     <div class="table-responsive">
-        <table class="table table-bordered text-center" *ngIf="invoices.length; else messageTemplate">
+        <table class="table table-bordered text-center" *ngIf="anticipations.length; else messageTemplate">
             <thead class="thead-light">
                 <tr>
                     <th>Nº NF</th>
                     <th>Descrição</th>
                     <th>Data de Pagamento</th>
-                    <th>Status</th>
                     <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let invoice of invoices">
-                    <td>{{ invoice.number }}</td>
-                    <td>{{ invoice.description }}</td>
-                    <td>{{ invoice.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
-                    <td>{{ invoice.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
+                <tr *ngFor="let anticipation of anticipations">
+                    <td>{{ anticipation.number }}</td>
+                    <td>{{ anticipation.description }}</td>
+                    <td>{{ anticipation.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
                     <td>
-                        <a href="#" class="btn btn-success" data-toggle="modal"
+                        <a href="#" class="btn btn-success mr-2" data-toggle="modal"
                             data-target="#view">Aprovar Antecipação</a>
-                        <a href="#" class="btn btn-danger" data-toggle="modal"
+                        <a href="#" class="btn btn-danger mr-2" data-toggle="modal"
                         data-target="#view">Reprovar Antecipação</a>
                     </td>
                 </tr>
@@ -28,7 +26,7 @@
         </table>
     </div>
     <ng-template #messageTemplate>
-        <p class="text-center text-muted">Não encontrado notas fiscais.</p>
+        <p class="text-center text-muted">Não encontrado antecipações de notas fiscais.</p>
     </ng-template>
     <div>
         <app-modal 
