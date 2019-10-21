@@ -9,6 +9,7 @@ import { Anticipation } from '../invoice/anticipation';
 export class InvoicesAnticipationComponent implements OnInit {
 
     anticipations: Anticipation[] = [];
+    newDate: Date;
 
     constructor(
         private invoiceService: InvoiceService
@@ -21,5 +22,13 @@ export class InvoicesAnticipationComponent implements OnInit {
     listAnticipations(){
         this.invoiceService.listAnticipations()
             .subscribe(anticipations => this.anticipations = anticipations);
+    }
+
+    approve(){
+        console.log('aprovado');
+    }
+
+    disapprove(){
+        console.log('desaprovado', this.newDate);
     }
 }

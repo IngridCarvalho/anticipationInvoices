@@ -9,6 +9,7 @@ import { InvoiceService } from '../invoice/invoice.service';
 export class InvoiceListComponent implements OnInit{
 
     invoices: Invoice[] = [];
+    newDate: Date;
 
     constructor(
         private invoiceService: InvoiceService
@@ -30,6 +31,10 @@ export class InvoiceListComponent implements OnInit{
     listInvoices(){
         this.invoiceService.listInvoices()
             .subscribe(invoices => this.invoices = invoices);
+    }
+
+    anticipation(){
+        console.log(this.newDate);
     }
 
 }

@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { HomeModule } from './home/home.module';
 import { InvoicesModule } from './invoices/invoices.module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
@@ -15,6 +16,7 @@ import { LoginModule } from './login/login.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     InvoicesModule,
     HttpClientModule,
     LoginModule

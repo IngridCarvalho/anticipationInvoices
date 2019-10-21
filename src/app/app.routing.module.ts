@@ -3,26 +3,34 @@ import { Routes, RouterModule } from '@angular/router';
 import { InvoiceListComponent } from './invoices/invoice-list/invoice-list.component';
 import { InvoiceFormComponent } from './invoices/invoice-form/invoice-form.component';
 import { InvoicesAnticipationComponent } from './invoices/invoices-anticipation/invoices-anticipation.component';
-import { InvoicesComponent } from './invoices/invoices.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
+import { LoginGuard } from './core/auth/login.guard';
+import { AuthGuard } from './core/auth/auth.guard';
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'invoices',
+        redirectTo: 'login',
     },
     {
         path: 'login',
         component: LoginComponent,
-        // canActivate: [LoginGuard]
+        canActivate: [LoginGuard]
     },
     {
-        path: 'invoices',
-        component: InvoicesComponent,
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
         children: [
             {
                 path: '',
+                component: HomePageComponent
+            },
+            {
+                path: 'list-invoices',
                 component: InvoiceListComponent
             },
             {

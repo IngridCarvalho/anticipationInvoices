@@ -1,0 +1,43 @@
+.form-signin {
+    width: 100%;
+    max-width: 28%;
+    padding-top: 7%;
+    padding-bottom: 25%;
+    margin: auto;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+.background {
+    background-color: #e3f2fd;
+}
+
+
+/* Media queries */
+
+@media (min-width: 768px) {
+    h1{
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    h1{
+    font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1{
+      font-size: 20px;
+    }
+
+    .form-signin{
+        max-width: 60%;
+    }
+}

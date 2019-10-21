@@ -17,9 +17,9 @@
                     <td>{{ anticipation.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
                     <td>
                         <a href="#" class="btn btn-success mr-2" data-toggle="modal"
-                            data-target="#view">Aprovar Antecipação</a>
+                            data-target="#approve">Aprovar Antecipação</a>
                         <a href="#" class="btn btn-danger mr-2" data-toggle="modal"
-                        data-target="#view">Reprovar Antecipação</a>
+                        data-target="#disapprove">Reprovar Antecipação</a>
                     </td>
                 </tr>
             </tbody>
@@ -30,14 +30,20 @@
     </ng-template>
     <div>
         <app-modal 
-            titleModal="Solicitar Antecipação de pagamento:" 
-            idModal="view">
-            <form (submit)="gravar()">
+            titleModal="Aprovar antecipação de pagamento:" 
+            idModal="approve"
+            (btnConfirm)="approve()">
+            <p>Confirma aprovação da solicitação de antecipação?</p>
+        </app-modal>
+        <app-modal 
+            titleModal="Reprovar antecipação de pagamento:" 
+            idModal="disapprove"
+            (btnConfirm)="disapprove()">
+                <p>Tem certeza que deseja reprovar a solicitação de antecipação? Você pode sugerir uma nova data, no campo abaixo.</p>
                 <div class="input-group">
                     <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
-                    <input type="date" class="form-control col-5">
+                    <input type="date" [(ngModel)]="newDate" class="form-control col-5">
                 </div>
-            </form>
         </app-modal>
     </div>
 </div>

@@ -1,6 +1,13 @@
 <div class="container">
-    <app-title titlePage="Lista de Notas" btnNew="Nova Nota Fiscal" urlPage="add-invoice"></app-title>
-    <app-search search="Buscar NF:" searchPlaceholder="Informe um número" [numberSearch]="number"
+    <app-title 
+        titlePage="Lista de Notas" 
+        btnNew="Nova Nota Fiscal" 
+        urlPage="add-invoice">
+    </app-title>
+    <app-search 
+        search="Buscar NF:" 
+        searchPlaceholder="Informe um número" 
+        [numberSearch]="number"
         (btnSearch)="search($event)">
     </app-search>
     <div class="table-responsive">
@@ -34,13 +41,12 @@
     <div>
         <app-modal 
             titleModal="Solicitar Antecipação de pagamento:" 
-            idModal="view">
-            <form (submit)="gravar()">
-                <div class="input-group">
-                    <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
-                    <input type="date" class="form-control col-5">
-                </div>
-            </form>
+            idModal="view"
+            (btnConfirm)="anticipation()">
+            <div class="input-group">
+                <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
+                <input type="date" [(ngModel)]="newDate" class="form-control col-5">
+            </div>
         </app-modal>
     </div>
 </div>
