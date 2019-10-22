@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { CoreModule } from '../core/core.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { PanelNotificationsModule } from '../shared/components/panel-notifications/panel-notifications.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     imports: [
         CommonModule,
         RouterModule,
-        CoreModule
+        CoreModule,
+        PanelNotificationsModule
     ]
 })
 export class HomeModule{}
