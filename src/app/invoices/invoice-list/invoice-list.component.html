@@ -18,22 +18,30 @@
                     <th>Descrição</th>
                     <th>Data de Pagamento</th>
                     <th>Status</th>
-                    <th>Opções</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let invoice of invoices">
+                <tr *ngFor="let invoice of invoices" [ngClass]="{'disapproved': invoice.status == 'Reprovado'}">
                     <td>{{ invoice.number }}</td>
                     <td>{{ invoice.description }}</td>
                     <td>{{ invoice.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
-                    <td>{{ invoice.status }}</td>
-                    <td *ngIf="invoice.status == 'Pendente'">
-                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#view" 
-                            (click)=invoiceSelected(invoice)>Solicitar Antecipação</a>
-                    </td>
+                    <td *ngIf="invoice.status != 'Reprovado'">{{ invoice.status }}</td>
                     <td *ngIf="invoice.status == 'Reprovado'">
-                        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#requestAgain" 
-                            (click)=invoiceSelected(invoice)>Solicitar novamente antecipação</a>
+                        {{ invoice.status }} 
+                        <img class="ml-2" data-toggle="tooltip" data-placement="top" title="Tooltip on top" src="../../../assets/imgs/alta-importância-28.png">
+                    </td>
+                    <td>
+                        <app-dropdown>
+                            <a class="dropdown-item" href="#"
+                               data-toggle="modal" data-target="#view" 
+                               (click)=invoiceSelected(invoice)>Visualizar
+                            </a>
+                            <a class="dropdown-item" href="#"
+                                data-toggle="modal" data-target="#request" 
+                                (click)=invoiceSelected(invoice)>Solicitar Antecipação
+                            </a>
+                        </app-dropdown>
                     </td>
                 </tr>
             </tbody>
@@ -43,26 +51,23 @@
         <p class="text-center text-muted">Não encontrado notas fiscais.</p>
     </ng-template>
 
+    <div *ngIf="invoice">
+        <app-modal 
+            titleModal="Visualizar" 
+            idModal="view">
+            <p><strong>Número da NF: </strong>{{ invoice.number }}</p>
+            <p><strong>Data de Faturamento: </strong>{{ invoice.billingDate | date:'dd/MM/yyyy' : 'z'}}</p>
+        </app-modal>
+    </div>
+
     <app-modal 
-        titleModal="Solicitar Antecipação de pagamento:" 
-        idModal="view"
+        titleModal="Solicitar Antecipação" 
+        idModal="request"
+        btnText="Confirmar"
         (btnConfirm)="anticipation()">
         <div class="input-group">
             <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
             <input type="date" [(ngModel)]="newDate" class="form-control col-5">
         </div>
     </app-modal>
-
-    <div *ngIf="invoice">
-        <app-modal 
-            titleModal="Solicitar Antecipação novamente:" 
-            idModal="requestAgain"
-            (btnConfirm)="anticipation()">
-            <p>Data sugerida pelo gestor: {{invoice.paymentNewDate | date:'dd/MM/yyyy' : 'z' }}</p>
-            <div class="input-group">
-                <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
-                <input type="date" [(ngModel)]="newDate" class="form-control col-5">
-            </div>
-        </app-modal>
-    </div>
 </div>

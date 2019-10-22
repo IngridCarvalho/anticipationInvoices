@@ -10,6 +10,7 @@ import { ModalModule } from '../shared/components/modal/modal.module';
 import { TitleModule } from '../shared/components/title/title.module';
 import { ErrorMessageModule } from '../shared/components/error-message/error-message.module';
 import { InvoicesAnticipationComponent } from './invoices-anticipation/invoices-anticipation.component';
+import { DropdownActionsModule } from '../shared/components/dropdown-actions/dropdown-actions.module';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { InvoicesAnticipationComponent } from './invoices-anticipation/invoices-
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        ErrorMessageModule
+        ErrorMessageModule,
+        DropdownActionsModule
     ]
 })
 export class InvoicesModule{}

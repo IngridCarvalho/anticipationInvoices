@@ -4,7 +4,8 @@ import { Invoice } from '../invoice/invoice';
 import { InvoiceService } from '../invoice/invoice.service';
 
 @Component({
-    templateUrl: './invoice-list.component.html'
+    templateUrl: './invoice-list.component.html',
+    styleUrls: ['./invoice-list.component.css']
 })
 export class InvoiceListComponent implements OnInit{
 
@@ -49,6 +50,4 @@ export class InvoiceListComponent implements OnInit{
                 err => console.log(err)
             );
     }
-
-
 }
