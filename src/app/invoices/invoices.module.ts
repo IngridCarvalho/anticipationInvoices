@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
@@ -27,7 +28,8 @@ import { DropdownActionsModule } from '../shared/components/dropdown-actions/dro
         FormsModule,
         ReactiveFormsModule,
         ErrorMessageModule,
-        DropdownActionsModule
+        DropdownActionsModule,
+        TooltipModule
     ]
 })
 export class InvoicesModule{}

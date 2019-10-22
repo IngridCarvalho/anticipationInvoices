@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 import { Invoice } from './invoice';
-import { Anticipation } from './anticipation';
 
 const API = environment.apiUrl;
 
@@ -25,7 +24,7 @@ export class InvoiceService{
     }
 
     listAnticipations(){
-        return this.http.get<Anticipation[]>(API + 'anticipations');
+        return this.http.get<Invoice[]>(API + 'anticipations');
     }
 
     updateInvoice(id, data){

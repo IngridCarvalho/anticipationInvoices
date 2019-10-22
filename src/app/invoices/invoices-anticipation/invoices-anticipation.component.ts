@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InvoiceService } from '../invoice/invoice.service';
-import { Anticipation } from '../invoice/anticipation';
+import { Invoice } from '../invoice/invoice';
 
 @Component({
     templateUrl: './invoices-anticipation.component.html'
 })
 export class InvoicesAnticipationComponent implements OnInit {
 
-    invoiceId: string;
-    anticipations: Anticipation[] = [];
+    invoice: Invoice;
+    anticipations: Invoice[] = [];
     newDate: Date;
 
     constructor(
@@ -22,18 +22,18 @@ export class InvoicesAnticipationComponent implements OnInit {
 
     listAnticipations(){
         this.invoiceService.listAnticipations()
-            .subscribe(anticipations => this.anticipations = anticipations);
+            .subscribe(anticipations => {this.anticipations = anticipations, console.log(anticipations)});
     }
 
-    invoiceSelected(id){
-        this.invoiceId = id;
+    invoiceSelected(anticipation){
+        this.invoice = anticipation;
     }
 
     approve(){
         const data = {
             status: 'Aprovado'
         }
-        this.invoiceService.updateInvoice(this.invoiceId, data)
+        this.invoiceService.updateInvoice(this.invoice._id, data)
             .subscribe(
                 () => this.listAnticipations(),
                 err => console.log(err)
@@ -45,7 +45,7 @@ export class InvoicesAnticipationComponent implements OnInit {
             paymentNewDate: this.newDate,
             status: 'Reprovado'
         }
-        this.invoiceService.updateInvoice(this.invoiceId, data)
+        this.invoiceService.updateInvoice(this.invoice._id, data)
             .subscribe(
                 () => this.listAnticipations(),
                 err => console.log(err)

@@ -27,9 +27,15 @@
                     <td>{{ invoice.description }}</td>
                     <td>{{ invoice.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
                     <td *ngIf="invoice.status != 'Reprovado'">{{ invoice.status }}</td>
-                    <td *ngIf="invoice.status == 'Reprovado'">
-                        {{ invoice.status }} 
-                        <img class="ml-2" data-toggle="tooltip" data-placement="top" title="Tooltip on top" src="../../../assets/imgs/alta-importância-28.png">
+                    <td *ngIf="invoice.status == 'Reprovado' && invoice.paymentNewDate">
+                        <span tooltip="Data sugerida pelo gestor: {{invoice.paymentNewDate | date:'dd/MM/yyyy' : 'z'}}" placement="bottom">{{ invoice.status }} 
+                            <img class="ml-2" src="../../../assets/imgs/alta-importância-28.png">
+                        </span>
+                    </td>
+                    <td *ngIf="invoice.status == 'Reprovado' && !invoice.paymentNewDate">
+                        <span tooltip="Gestor não sugeriu uma nova data." placement="bottom">{{ invoice.status }} 
+                            <img class="ml-2" src="../../../assets/imgs/alta-importância-28.png">
+                        </span>
                     </td>
                     <td>
                         <app-dropdown>
