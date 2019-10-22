@@ -1,8 +1,9 @@
 <nav class="navbar navbar-light border-bottom shadow-sm" style="background-color: #e3f2fd">
     <div class="navbar-brand">
-        <img src="../../../assets/imgs/pilha-de-dinheiro-64.png" width="45" height="45"><span class="ml-3 mr-3">Desafio Decola</span>
+        <img src="../../../assets/imgs/foguete-64.png" width="45" height="45"><span class="ml-3 mr-3">Desafio Decola</span>
     </div>
     <div class="btn-group">
+        <a class="p-2 text-dark mr-3" [routerLink]="'/home'">Início</a>
         <a showIfAnalyst class="p-2 text-dark mr-3" [routerLink]="'list-invoices'">Lista de Notas Fiscais</a>
         <a showIfManager class="p-2 text-dark mr-3" [routerLink]="'anticipations'">Solicitações de Antecipação</a>
         <a class="dropdown-toggle ml-5 mt-2" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">

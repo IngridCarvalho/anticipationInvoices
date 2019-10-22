@@ -14,12 +14,12 @@
                 <tr *ngFor="let anticipation of anticipations">
                     <td>{{ anticipation.number }}</td>
                     <td>{{ anticipation.description }}</td>
-                    <td>{{ anticipation.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
+                    <td>{{ anticipation.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
                     <td>
-                        <a href="#" class="btn btn-success mr-2" data-toggle="modal"
-                            data-target="#approve">Aprovar Antecipação</a>
-                        <a href="#" class="btn btn-danger mr-2" data-toggle="modal"
-                        data-target="#disapprove">Reprovar Antecipação</a>
+                        <a href="#" class="btn btn-success mr-2" data-toggle="modal" data-target="#approve" 
+                            (click)=invoiceSelected(anticipation._id)>Aprovar Antecipação</a>
+                        <a href="#" class="btn btn-danger mr-2" data-toggle="modal" data-target="#disapprove" 
+                            (click)=invoiceSelected(anticipation._id)>Reprovar Antecipação</a>
                     </td>
                 </tr>
             </tbody>
@@ -39,7 +39,8 @@
             titleModal="Reprovar antecipação de pagamento:" 
             idModal="disapprove"
             (btnConfirm)="disapprove()">
-                <p>Tem certeza que deseja reprovar a solicitação de antecipação? Você pode sugerir uma nova data, no campo abaixo.</p>
+                <p>Tem certeza que deseja reprovar a solicitação de antecipação? 
+                    Você pode sugerir uma nova data, no campo abaixo.</p>
                 <div class="input-group">
                     <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
                     <input type="date" [(ngModel)]="newDate" class="form-control col-5">

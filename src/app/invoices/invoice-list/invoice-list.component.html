@@ -2,7 +2,7 @@
     <app-title 
         titlePage="Lista de Notas" 
         btnNew="Nova Nota Fiscal" 
-        urlPage="add-invoice">
+        urlPage="/home/add-invoice">
     </app-title>
     <app-search 
         search="Buscar NF:" 
@@ -25,11 +25,15 @@
                 <tr *ngFor="let invoice of invoices">
                     <td>{{ invoice.number }}</td>
                     <td>{{ invoice.description }}</td>
-                    <td>{{ invoice.billingDate | date:'dd/MM/yyyy' : 'z' }}</td>
+                    <td>{{ invoice.paymentDate | date:'dd/MM/yyyy' : 'z' }}</td>
                     <td>{{ invoice.status }}</td>
-                    <td>
-                        <a href="#" class="btn btn-info" data-toggle="modal"
-                            data-target="#view">Solicitar Antecipação</a>
+                    <td *ngIf="invoice.status == 'Pendente'">
+                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#view" 
+                            (click)=invoiceSelected(invoice)>Solicitar Antecipação</a>
+                    </td>
+                    <td *ngIf="invoice.status == 'Reprovado'">
+                        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#requestAgain" 
+                            (click)=invoiceSelected(invoice)>Solicitar novamente antecipação</a>
                     </td>
                 </tr>
             </tbody>
@@ -38,11 +42,23 @@
     <ng-template #messageTemplate>
         <p class="text-center text-muted">Não encontrado notas fiscais.</p>
     </ng-template>
-    <div>
+
+    <app-modal 
+        titleModal="Solicitar Antecipação de pagamento:" 
+        idModal="view"
+        (btnConfirm)="anticipation()">
+        <div class="input-group">
+            <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
+            <input type="date" [(ngModel)]="newDate" class="form-control col-5">
+        </div>
+    </app-modal>
+
+    <div *ngIf="invoice">
         <app-modal 
-            titleModal="Solicitar Antecipação de pagamento:" 
-            idModal="view"
+            titleModal="Solicitar Antecipação novamente:" 
+            idModal="requestAgain"
             (btnConfirm)="anticipation()">
+            <p>Data sugerida pelo gestor: {{invoice.paymentNewDate | date:'dd/MM/yyyy' : 'z' }}</p>
             <div class="input-group">
                 <label for="dataAntecipation" class="mr-2 mt-1">Informe a nova data:</label>
                 <input type="date" [(ngModel)]="newDate" class="form-control col-5">

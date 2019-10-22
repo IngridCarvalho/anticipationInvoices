@@ -8,6 +8,7 @@ import { Anticipation } from '../invoice/anticipation';
 })
 export class InvoicesAnticipationComponent implements OnInit {
 
+    invoiceId: string;
     anticipations: Anticipation[] = [];
     newDate: Date;
 
@@ -24,11 +25,30 @@ export class InvoicesAnticipationComponent implements OnInit {
             .subscribe(anticipations => this.anticipations = anticipations);
     }
 
+    invoiceSelected(id){
+        this.invoiceId = id;
+    }
+
     approve(){
-        console.log('aprovado');
+        const data = {
+            status: 'Aprovado'
+        }
+        this.invoiceService.updateInvoice(this.invoiceId, data)
+            .subscribe(
+                () => this.listAnticipations(),
+                err => console.log(err)
+            );
     }
 
     disapprove(){
-        console.log('desaprovado', this.newDate);
+        const data = {
+            paymentNewDate: this.newDate,
+            status: 'Reprovado'
+        }
+        this.invoiceService.updateInvoice(this.invoiceId, data)
+            .subscribe(
+                () => this.listAnticipations(),
+                err => console.log(err)
+            );
     }
 }

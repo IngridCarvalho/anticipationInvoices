@@ -10,6 +10,7 @@ export class InvoiceListComponent implements OnInit{
 
     invoices: Invoice[] = [];
     newDate: Date;
+    invoice: Invoice;
 
     constructor(
         private invoiceService: InvoiceService
@@ -33,8 +34,21 @@ export class InvoiceListComponent implements OnInit{
             .subscribe(invoices => this.invoices = invoices);
     }
 
-    anticipation(){
-        console.log(this.newDate);
+    invoiceSelected(invoice){
+        this.invoice = invoice;
     }
+
+    anticipation(){
+        const data = {
+            paymentDate: this.newDate,
+            status: 'Solicitado Antecipação'
+        }
+        this.invoiceService.updateInvoice(this.invoice._id, data)
+            .subscribe(
+                () => this.listInvoices(),
+                err => console.log(err)
+            );
+    }
+
 
 }

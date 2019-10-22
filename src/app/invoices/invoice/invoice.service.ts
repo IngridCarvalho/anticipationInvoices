@@ -28,4 +28,8 @@ export class InvoiceService{
         return this.http.get<Anticipation[]>(API + 'anticipations');
     }
 
+    updateInvoice(id, data){
+        return this.http.put(API + 'invoice/' + id, data);
+    }
+
 }

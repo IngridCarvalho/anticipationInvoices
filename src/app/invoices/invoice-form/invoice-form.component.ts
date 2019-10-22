@@ -39,7 +39,7 @@ export class InvoiceFormComponent implements OnInit{
 
             this.invoiceService.addInvoice(newInvoice)
                 .subscribe(
-                    () => this.router.navigate(['']),
+                    () => this.router.navigate(['/home/list-invoices']),
                     err => console.log(err)
                 )
         }
