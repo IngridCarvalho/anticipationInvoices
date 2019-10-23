@@ -4,12 +4,37 @@
         <p class="lead">Bem-vindo ao sistema de controle de antecipações de notas fiscais!<br>Você pode acessar as opções pelo cabeçalho.</p>
     </div>
 
-    <div class="row">
-        <div class="col-6">
-            <app-panel></app-panel>
+    <div class="row justify-content-md-center">
+        <div class="col-4" *ngIf="userService.user.profile == 'analista'">
+            <app-panel
+                title="Notas fiscais"
+                labelOne="Pendentes: "
+                labelTwo="Em solicitação: "
+                labelThree="Aprovadas: "
+                labelFour="Reprovadas: "
+                [valueOne]="pending"
+                [valueTwo]="onRequest"
+                [valueThree]="approve"
+                [valueFour]="disapprove">
+            </app-panel>
         </div>
-        <div class="col-6">
-            <app-panel></app-panel>
+        <div class="col-4" *ngIf="disapprove != 0 && userService.user.profile == 'analista'">
+            <app-panel
+                title="Notificações"
+                labelOne="Existem notas fiscais reprovadas!">
+            </app-panel>
+        </div>     
+        <div class="col-4" *ngIf="onRequest != 0 && userService.user.profile == 'gestor'">
+            <app-panel
+                title="Notificações"
+                labelOne="Existem notas fiscais para verificar antecipação!">
+            </app-panel>
+        </div>
+        <div class="col-4" *ngIf="onRequest == 0 && userService.user.profile == 'gestor'">
+            <app-panel
+                title="Notificações"
+                labelOne="Não existem notas fiscais para verificar a antecipação.">
+            </app-panel>
         </div>
     </div>
 
