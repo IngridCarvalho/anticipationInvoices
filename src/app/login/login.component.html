@@ -11,19 +11,19 @@
         <p><em>Entre com seu usuário e senha.</em></p>
         <div class="form-group">
             <input formControlName="login" type="text" placeholder="Usuário" class="form-control">
-            <app-error-message mensagem="O usuário é obrigatório!" *ngIf="loginForm.get('login').errors?.required && 
+            <app-error-message message="O usuário é obrigatório!" *ngIf="loginForm.get('login').errors?.required && 
                 (form.submitted || loginForm.get('login').touched)">
             </app-error-message>
         </div>
         <div class="form-group">
             <input formControlName="password" type="password" placeholder="Senha" class="form-control">
-            <app-error-message mensagem="A senha é obrigatória!" *ngIf="loginForm.get('password').errors?.required && 
+            <app-error-message message="A senha é obrigatória!" *ngIf="loginForm.get('password').errors?.required && 
                 (form.submitted || loginForm.get('password').touched)">
             </app-error-message>
         </div>
 
         <button type="submit" class="btn btn-dark btn-block">Entrar</button>
 
-        <app-error-message mensagem="Usuário ou senha inválidos!" *ngIf="loginError"></app-error-message>
+        <app-error-message message="Usuário ou senha inválidos!" *ngIf="loginError"></app-error-message>
     </form>
 </div>

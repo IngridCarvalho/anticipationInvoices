@@ -23,7 +23,7 @@ export class RequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent 
         | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
             
-            if (req.url == `${API}/logon`) {
+            if (req.url == `${API}logon`) {
                 return next.handle(req);
             }
        
