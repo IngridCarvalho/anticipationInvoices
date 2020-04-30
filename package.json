@@ -22,7 +22,7 @@
     "angular": "^1.7.8",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery.js": "0.0.2-security",
     "jwt-decode": "^2.2.0",
     "ng2-tooltip-directive": "^2.8.17",
